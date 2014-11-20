@@ -997,7 +997,7 @@ double TemperatureDependentVariables::get_body_heat_flux(const double temperatur
   double resistivity;
   double current_in_element_a = current_in_element_ma*1.0e-3;  // mA -> A
   double heater_crosssection_area_m_square=heater_crosssection_area_mm_square_*1.0e-3*1.0e-3;  //mm^2->m^2
-  resistivity=-6.674e-13*temperature*temperature+2.462e-9*temperature-1.893e-07;// titanium heater
+  resistivity = 1.403e-15*temperature*temperature + 1.037e-8*temperature - 2.831e-6;// titanium heater
   body_heat_flux = resistivity*pow((current_in_element_a/heater_crosssection_area_m_square),2);
   body_heat_flux *= 1.0e-6;
   return body_heat_flux;
@@ -1011,7 +1011,7 @@ double TemperatureDependentVariables::get_body_heat_flux_derivative(const double
   double body_heat_flux_derivative;
   double current_in_element_a=current_in_element_ma*1.0e-3;
   double heater_crosssection_area_m_square=heater_crosssection_area_mm_square_*1.0e-3*1.0e-3;  //mm^2->m^2
-  resistivity_derivative=-6.674e-13*2*temperature+2.462e-9;// titanium heater
+  resistivity_derivative=1.403e-15*2*temperature+1.037e-8;// titanium heater
   body_heat_flux_derivative = resistivity_derivative*pow((current_in_element_a/heater_crosssection_area_m_square),2);
   body_heat_flux_derivative *= 1.0e-6;
   return body_heat_flux_derivative;
